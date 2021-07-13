@@ -11,6 +11,7 @@ namespace TddPortability.Tests
         public async Task TestEntries()
         {
             await using var context = new PortabilityContext(new DbContextOptionsBuilder().UseSqlite("Data Source=test.db").Options);
+            await context.Database.EnsureDeletedAsync();
             await context.Database.EnsureCreatedAsync();
             
             context
